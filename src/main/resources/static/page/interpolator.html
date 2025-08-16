@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Interpolator Ever</title>
+<link rel="stylesheet" href="/style/interpolator.css">
+<script src="https://www.desmos.com/api/v1.10/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+</head>
+<body>
+	<div id="control-panel">
+		<div class="header">Function Interpolator</div>
+		<div id="point-input-container">
+			<div class="header">
+				Points <input type="number" id="number-spinbox-input" class="number-spinbox-input" value="10" min="2" max="15"
+					placeholder="10" onkeypress="return isNumberKey(event)"> </label>
+				<button id="clear-table-button">Clear</button>
+				<button id="fill-table-button">Fill</button>
+			</div>
+			<div id="point-table-container">
+				<table id="point-table">
+					<tbody>
+						<tr>
+							<th scope="row">x</th>
+						</tr>
+						<tr>
+							<th scope="row">y</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div id="method-input-container">
+			<div class="header">Interpolation Methods</div>
+			<div class="method-checkbox-container">
+				<input type="checkbox" class="method-checkbox" value="lagrange"> Lagrange
+			</div>
+			<div class="method-checkbox-container">
+				<input type="checkbox" class="method-checkbox" value="newton"> Newton
+			</div>
+			<div class="method-checkbox-container">
+				<input type="checkbox" class="method-checkbox" value="gauss"> Gauss
+			</div>
+			<div class="method-checkbox-container">
+				<input type="checkbox" class="method-checkbox" value="stirling"> Stirling
+			</div>
+			<div class="method-checkbox-container">
+				<input type="checkbox" class="method-checkbox" value="bessel"> Bessel
+			</div>
+		</div>
+
+		<div id="x-input-container">
+			x <input type="text" id="x-input-field" placeholder="0.25" />
+		</div>
+
+		<div id="button-container">
+			<button id="export-form-button" class="generic-button">Export</button>
+			<button id="import-form-button" class="generic-button">Import</button>
+			<button id="solve-button" class="generic-button">Solve</button>
+		</div>
+	</div>
+	<div id="view-panel">
+		<div id="desmos-container">
+			<!--			<div class="no-click overlay"></div>-->
+		</div>
+		<div id="solution-container">
+			<div id="solution-display">
+				<div id="solution-display-header">
+					<div id="page-name"></div>
+					<div id="page-number">0/0</div>
+					<button id="nav-forward-button" class="generic-button"><</button>
+					<button id="nav-back-button" class="generic-button">></button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+	MathJax = {
+		    tex: {
+		        inlineMath: [['$', '$'], ['\$', '\$']]
+		    },
+		    startup: {
+		        ready: () => {
+		            MathJax.startup.defaultReady();
+		            window.mathJaxReady = true;
+		            if (window.mathJaxQueue) {
+		                window.mathJaxQueue.forEach(fn => fn());
+		                window.mathJaxQueue = [];
+		            }
+		        }
+		    }
+		};
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+	<script type="module" src="/script/interpolator.js"></script>
+</body>
+</html>

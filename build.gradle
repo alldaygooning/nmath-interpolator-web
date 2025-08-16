@@ -1,0 +1,62 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.5'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'nikita'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+    mavenCentral()
+    
+    maven {
+        url = uri('https://oss.sonatype.org/content/repositories/snapshots')
+    }
+    
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+    
+    maven {
+        url = uri('https://packages.orekit.org/repository/maven-snapshots/')
+        mavenContent {
+            snapshotsOnly()
+        }
+    }
+    
+    maven {
+        url = uri('https://oss.sonatype.org/content/repositories/snapshots')
+        mavenContent {
+            snapshotsOnly()
+        }
+    }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation("org.matheclipse:matheclipse-core:3.1.0-SNAPSHOT")
+	implementation files('/home/gangster/Desktop/Homework (͠≖ ͜ʖ͠≖)/Методы Оптимизации/nmath/build/libs/nmath-1.0.5.jar')
+	
+	// https://mvnrepository.com/artifact/org.json/json
+	implementation("org.json:json:20250107")
+	
+	// https://mvnrepository.com/artifact/ch.obermuhlner/big-math
+	implementation("ch.obermuhlner:big-math:2.3.2")
+	
+	implementation 'org.apache.logging.log4j:log4j-api:2.24.0'
+    implementation 'org.apache.logging.log4j:log4j-core:2.24.0'
+}
+
+bootRun {
+    jvmArgs = [
+    	"-XX:+AllowEnhancedClassRedefinition",
+    	"-XX:HotswapAgent=fatjar"
+    	]
+}

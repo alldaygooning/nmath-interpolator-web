@@ -1,0 +1,30 @@
+@import url(./fonts.css);
+
+html {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-rows: 2.5% 32% 32% 32% 2.5%;
+	grid-template-columns: 2% 40% 56% 2%;
+	font-family: 'Menlo';
+	font-weight: normal;
+	font-size: 2.5vmin;
+}
+
+.no-click{
+	pointer-events: auto; 
+}
+
+.generic-button{
+	font-family: inherit;
+	font-size: inherit;
+}

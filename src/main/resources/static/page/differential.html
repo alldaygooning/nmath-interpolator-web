@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Differential Ever</title>
+<link rel="stylesheet" href="/style/differential.css">
+<script src="https://www.desmos.com/api/v1.10/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+</head>
+<body>
+	<div id="control-panel">
+		<div class="header">Differential Function Approximator</div>
+		<div id="expression-input-container">
+			Differential Equation:<input type="text" id="differential-equation" placeholder="x + y">
+		</div>
+		<div id="interval-input-container">
+			Interval:
+			<input type="text" id="left-endpoint" placeholder="0" size="10">
+			<input type="text" id="right-endpoint" placeholder="1" size="10">
+		</div>
+		<div id="initial-input-container">
+			$y(x_0)$:
+			<input type="text" id="initial-value" placeholder="1">
+		</div>
+		<div id="step-input-container">
+			$h$:
+			<input type="text" id="step" placeholder="0.1" size="10">
+		</div>
+		<div id="precision-input-containter">
+			$\varepsilon$:
+			<input type="text" id="precision" placeholder="0.001" size="10">
+		</div>
+		<div id="method-input-container">
+			<div class="header">Differential Methods</div>
+			<div class="method-checkbox-container">
+				<input type="checkbox" class="method-checkbox" value="deuler"> Euler
+			</div>
+			<div class="method-checkbox-container">
+				<input type="checkbox" class="method-checkbox" value="moddeuler"> Modified Euler
+			</div>
+			<div class="method-checkbox-container">
+				<input type="checkbox" class="method-checkbox" value="milne"> Milne
+			</div>
+		</div>
+
+
+		<div id="button-container">
+			<button id="export-form-button" class="generic-button">Export</button>
+			<button id="import-form-button" class="generic-button">Import</button>
+			<button id="solve-button" class="generic-button">Solve</button>
+		</div>
+	</div>
+	<div id="view-panel">
+		<div id="desmos-container">
+			<!--			<div class="no-click overlay"></div>-->
+		</div>
+		<div id="solution-container">
+			<div id="solution-display">
+				<div id="solution-display-header">
+					<div id="page-name"></div>
+					<div id="page-number">0/0</div>
+					<button id="nav-forward-button" class="generic-button"><</button>
+					<button id="nav-back-button" class="generic-button">></button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+	MathJax = {
+		    tex: {
+		        inlineMath: [['$', '$'], ['\$', '\$']]
+		    },
+		    startup: {
+		        ready: () => {
+		            MathJax.startup.defaultReady();
+		            window.mathJaxReady = true;
+		            if (window.mathJaxQueue) {
+		                window.mathJaxQueue.forEach(fn => fn());
+		                window.mathJaxQueue = [];
+		            }
+		        }
+		    }
+		};
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+	<script type="module" src="/script/differential/differential.js"></script>
+</body>
+</html>
